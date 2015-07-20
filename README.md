@@ -1,5 +1,8 @@
 # surface-curvature
 1. The project is to represent a surface in 3D, using the libraries of scipy, numpy in python.
+For the code to run : 
+install numpy and scipy libraries of python.
+
 
 2. The maximum and the minimum curvatures of the surface are calculated and with the help of these curvatures
 The gaussian and the mean curvatures of a surface are calulated. 
