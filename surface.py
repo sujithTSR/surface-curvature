@@ -7,14 +7,14 @@ def surface_curvature(X,Y,Z):
 
 	(lr,lb)=X.shape
 
-	print lr
-	#print "awfshss-------------"
-	print lb
+	print(lr)
+	#print("awfshss-------------")
+	print(lb)
 #First Derivatives
 	Xv,Xu=np.gradient(X)
 	Yv,Yu=np.gradient(Y)
 	Zv,Zu=np.gradient(Z)
-#	print Xu
+#	print(Xu)
 
 #Second Derivatives
 	Xuv,Xuu=np.gradient(Xu)
@@ -67,16 +67,15 @@ def surface_curvature(X,Y,Z):
 # Alternative formula for gaussian curvature in wiki 
 # K = det(second fundamental) / det(first fundamental)
 #% Gaussian Curvature
-	K=(L*N-M**2)/(E*G-L**2)
+	K=(L*N-M**2)/(E*G-F**2)
 	K=np.reshape(K,lr*lb)
-#	print K.size
-#	print "ulalalalalalallalalala"
+#	print(K.size)
 #wiki trace of (second fundamental)(first fundamental inverse)
 #% Mean Curvature
-	H = (E*N + G*L - 2*F*M)/((E*G - F**2))
-	print H.shape
+	H = ((E*N + G*L - 2*F*M)/((E*G - F**2)))/2
+	print(H.shape)
 	H = np.reshape(H,lr*lb)
-#	print H.size
+#	print(H.size)
 
 #% Principle Curvatures
 	Pmax = H + np.sqrt(H**2 - K)
@@ -95,26 +94,12 @@ y = scipy.linspace(-1,1,20)
 z = (x**3 +y**2 +x*y)
 #s = nd.gaussian_filter(z,10)
 temp1 = surface_curvature(x,y,z)
-print "maximum curvatures"
-print temp1[0]
-print "minimum curvatures"
-print temp1[1]
+print("maximum curvatures")
+print(temp1[0])
+print("minimum curvatures")
+print(temp1[1])
 fig = pylab.figure()
 ax = Axes3D(fig)
-#te=0
-#print temp1[3]
-#for i in range(len(x)):
-#	for j in range(len(y)):
-#		for k in range(len(z)):
-#			if temp1[te]<0:
-#				ax.scatter(x,y,z,c=1)
-#				te=te+1
-#			elif(temp1[te]>0):
-#				ax.scatter(x,y,z,c=0)
-#				te=te+1
-#			else:
-#				ax.scatter(x,y,z,c=2)
-#				te=te+1
 
 ax.plot_surface(x,y,z)
 pylab.show()
